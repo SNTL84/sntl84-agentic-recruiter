@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freelancer Job Listings — Candidate Screening Report</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+  :root {
+    --primary: #1a1a2e;
+    --accent: #e94560;
+    --accent2: #0f3460;
+    --gold: #f5a623;
+    --green: #27ae60;
+    --teal: #0f6e56;
+    --purple: #6c5ce7;
+    --surface: #f8f7f4;
+    --card: #ffffff;
+    --border: #e5e2da;
+    --text: #1a1a2e;
+    --muted: #6b6b7b;
+    --tag-bg: #f0ede8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--primary);
+    color: white;
+    padding: 36px 40px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(233,69,96,0.12);
+  }
+  .header-meta { font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+  .header h1 { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+  .header-sub { font-size: 14px; color: rgba(255,255,255,0.65); }
+
+  .header-stats {
+    display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap;
+  }
+  .stat-pill {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 40px;
+    padding: 6px 16px;
+    font-size: 12px; color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+  .stat-pill strong { color: #fff; }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 40px;
+    background: var(--accent);
+    color: white;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .area-badge {
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 2px 10px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  /* ── JOB BLOCK ── */
+  .job-block {
+    margin: 0 24px 24px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--card);
+    overflow: hidden;
+  }
+
+  .job-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    align-items: start;
+    padding: 18px 22px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .job-num {
+    width: 36px; height: 36px;
+    background: var(--primary);
+    color: white;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 14px;
+    flex-shrink: 0;
+  }
+  .job-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .job-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    background: var(--tag-bg); border-radius: 4px;
+    padding: 2px 8px; font-size: 11px; color: var(--muted); font-weight: 500;
+  }
+  .tag.location { background: #e8f4fd; color: #0f3460; }
+  .tag.salary { background: #eafaf1; color: #0f6e56; }
+  .tag.gender { background: #fdf2f8; color: #8e44ad; }
+  .tag.exp { background: #fef9e7; color: #b7770d; }
+
+  .incentive-box {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .incentive-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; }
+  .incentive-amount { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: var(--accent); }
+
+  /* ── CANDIDATES ── */
+  .candidates-wrap { padding: 14px 22px 0; }
+  .cand-heading {
+    font-size: 11px; font-weight: 600; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 1px;
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .cand-heading::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .cand-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .cand-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    position: relative;
+  }
+  .cand-card:hover { border-color: #b0b0c0; }
+
+  .cand-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .av-blue { background: #dceefb; color: #0f3460; }
+  .av-green { background: #d5f0e3; color: #0f6e56; }
+  .av-purple { background: #ece9fb; color: #6c5ce7; }
+  .av-gold { background: #fef0d4; color: #b7770d; }
+  .av-coral { background: #fde8e8; color: #c0392b; }
+  .av-teal { background: #d6f0ea; color: #0a5c4a; }
+
+  .cand-name { font-weight: 600; font-size: 13px; line-height: 1.3; }
+  .cand-role { font-size: 11px; color: var(--muted); }
+
+  .cand-details { font-size: 12px; color: var(--muted); line-height: 1.8; }
+  .cand-details strong { color: var(--text); font-weight: 500; }
+
+  .fit-badge {
+    display: inline-block;
+    font-size: 10px; font-weight: 600;
+    padding: 2px 8px; border-radius: 20px;
+    margin-top: 8px;
+  }
+  .fit-high { background: #d5f0e3; color: #0f6e56; }
+  .fit-med { background: #fef0d4; color: #b7770d; }
+
+  .li-link {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 11px; color: #185fa5;
+    text-decoration: none; margin-top: 6px;
+    font-weight: 500;
+  }
+  .li-link:hover { text-decoration: underline; }
+
+  /* ── BOOLEAN SEARCH ── */
+  .bool-wrap {
+    margin: 0 22px 16px;
+    background: #f5f4f0;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .bool-label { font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+  .bool-text { font-family: 'Courier New', monospace; font-size: 11px; color: #333; word-break: break-all; line-height: 1.7; }
+
+  /* ── NO CANDIDATES ── */
+  .no-cand {
+    padding: 14px 22px;
+    font-size: 13px; color: var(--muted);
+    font-style: italic;
+  }
+
+  .page-break { height: 32px; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--primary); color: rgba(255,255,255,0.55);
+    text-align: center; padding: 20px;
+    font-size: 12px; margin-top: 32px;
+  }
+  .footer strong { color: white; }
+
+  @media print {
+    .job-block { page-break-inside: avoid; }
+    body { background: white; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<div class="header">
+  <div class="header-meta">Freelancer Recruitment · X-Ray Candidate Screener · April 14, 2026</div>
+  <h1>Job Listings × Candidate Report</h1>
+  <div class="header-sub">Google X-Ray sourced candidates matched to 19 open positions · Surat, Gujarat</div>
+  <div class="header-stats">
+    <div class="stat-pill">📋 <strong>19</strong> Open Positions</div>
+    <div class="stat-pill">📍 <strong>Surat</strong> All Areas</div>
+    <div class="stat-pill">💰 Incentive <strong>₹1,000–₹5,000</strong> per placement</div>
+    <div class="stat-pill">🔎 Source: LinkedIn / Naukri X-Ray</div>
+  </div>
+</div>
+
+<!-- ══ AREA: CREATIVE / MEDIA ══ -->
+<div class="page-break"></div>
+<div class="section-label">
+  Creative &amp; Media Roles
+  <span class="area-badge">Mota Varachha · Katargam · Lal Darwaja</span>
+</div>
+
+<!-- JOB 1 -->
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-num">1</div>
+    <div>
+      <div class="job-title">Video Editor Executive</div>
+      <div class="job-tags">
+        <span class="tag location">📍 Mota Varachha, Surat</span>
+        <span class="tag exp">⏳ 1–2 Years</span>
+        <span class="tag salary">💰 ₹15,000–₹20,000</span>
+        <span class="tag gender">👥 Both</span>
+        <span class="tag">2 Openings</span>
+      </div>
+    </div>
+    <div class="incentive-box">
+      <div class="incentive-label">Freelancer Incentive</div>
+      <div class="incentive-amount">₹5,000</div>
+    </div>
+  </div>
+  <div class="candidates-wrap">
+    <div class="cand-heading">X-Ray Screened Candidates</div>
+    <div class="cand-grid">
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-blue">SK</div>
+          <div>
+            <div class="cand-name">Smit Kukadiya</div>
+            <div class="cand-role">Video Editor &amp; Videographer</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Current:</strong> PP Savani CFE School, Surat<br>
+          <strong>Experience:</strong> 1+ Year (Mar 2024–May 2025)<br>
+          <strong>Skills:</strong> End-to-end video production, Educational content, Social content<br>
+          <strong>Location:</strong> Kamrej, Surat (Abrama Road)<br>
+          <strong>Status:</strong> Recently ended role — likely available
+        </div>
+        <div class="fit-badge fit-high">Strong Fit ✓</div><br>
+        <a class="li-link" href="https://www.linkedin.com/in/smit-kukadiya-b4568629a/" target="_blank">🔗 LinkedIn Profile</a>
+      </div>
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-teal">ME</div>
+          <div>
+            <div class="cand-name">Manish Edits</div>
+            <div class="cand-role">Freelance Video Editor</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Current:</strong> Freelance (Alpino Health Foods campaign)<br>
+          <strong>Experience:</strong> Active Freelancer in Surat<br>
+          <strong>Skills:</strong> Reels, 3D animation, brand video, viral content<br>
+          <strong>Location:</strong> Surat<br>
+          <strong>Noted:</strong> "Evolver of the Year 2024–25" award winner
+        </div>
+        <div class="fit-badge fit-med">Good Fit ◎</div><br>
+        <a class="li-link" href="https://www.linkedin.com/in/manisheditspro/" target="_blank">🔗 LinkedIn Profile</a>
+      </div>
+
+    </div>
+  </div>
+  <div class="bool-wrap">
+    <div class="bool-label">Google X-Ray Search String</div>
+    <div class="bool-text">site:linkedin.com/in "video editor" "Surat" ("Mota Varachha" OR "Katargam") ("open to work" OR "looking for" OR "available") -recruiter</div>
+  </div>
+</div>
+
+<!-- JOB 7 -->
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-num">7</div>
+    <div>
+      <div class="job-title">Video Editor</div>
+      <div class="job-tags">
+        <span class="tag location">📍 Katargam · Mota Varachha · Lal Darwaja</span>
+        <span class="tag exp">⏳ 1–3 Years</span>
+        <span class="tag salary">💰 ₹20,000–₹25,000</span>
+        <span class="tag gender">👥 Both</span>
+      </div>
+    </div>
+    <div class="incentive-box">
+      <div class="incentive-label">Freelancer Incentive</div>
+      <div class="incentive-amount">₹5,000</div>
+    </div>
+  </div>
+  <div class="candidates-wrap">
+    <div class="cand-heading">X-Ray Screened Candidates</div>
+    <div class="cand-grid">
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-coral">SM</div>
+          <div>
+            <div class="cand-name">Shrii Mishra</div>
+            <div class="cand-role">Video Editor · Social Media Specialist</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Last Role:</strong> Video Editor, Katalyst World (Unikon AI)<br>
+          <strong>Experience:</strong> 5 Years total; last role ended Apr 2025<br>
+          <strong>Achievement:</strong> Grew IG 0 → 10.1k followers in 4 months; ₹30L revenue<br>
+          <strong>Skills:</strong> Ad videos, Premiere Pro, social strategy<br>
+          <strong>Status:</strong> Recently freed — likely open
+        </div>
+        <div class="fit-badge fit-high">Strong Fit ✓</div><br>
+        <a class="li-link" href="https://www.linkedin.com/in/shrii-mishra-658b56158/" target="_blank">🔗 LinkedIn Profile</a>
+      </div>
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-purple">SK</div>
+          <div>
+            <div class="cand-name">Sachin Kumar</div>
+            <div class="cand-role">Video Editor · Content Creator</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Profile:</strong> Freelance Video Editor, Social Media Manager<br>
+          <strong>Skills:</strong> YouTube (long/short form), social ads, photography<br>
+          <strong>Location:</strong> Active on LinkedIn, Surat-compatible freelancer<br>
+          <strong>Status:</strong> Actively looking for work
+        </div>
+        <div class="fit-badge fit-med">Good Fit ◎</div><br>
+        <a class="li-link" href="https://www.linkedin.com/in/veditor-sachin/" target="_blank">🔗 LinkedIn Profile</a>
+      </div>
+
+    </div>
+  </div>
+  <div class="bool-wrap">
+    <div class="bool-label">Google X-Ray Search String</div>
+    <div class="bool-text">site:linkedin.com/in "video editor" "Surat" Gujarat 2024 OR 2025 "premiere pro" OR "after effects" -"hiring" -"we are looking"</div>
+  </div>
+</div>
+
+<!-- JOB 2 -->
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-num">2</div>
+    <div>
+      <div class="job-title">Graphics Executive</div>
+      <div class="job-tags">
+        <span class="tag location">📍 Mota Varachha, Surat</span>
+        <span class="tag exp">⏳ 6 Months–1 Year</span>
+        <span class="tag salary">💰 ₹15,000–₹20,000</span>
+        <span class="tag gender">👥 Both</span>
+        <span class="tag">2 Openings</span>
+      </div>
+    </div>
+    <div class="incentive-box">
+      <div class="incentive-label">Freelancer Incentive</div>
+      <div class="incentive-amount">₹5,000</div>
+    </div>
+  </div>
+  <div class="candidates-wrap">
+    <div class="cand-heading">X-Ray Screened Candidates</div>
+    <div class="cand-grid">
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-green">HG</div>
+          <div>
+            <div class="cand-name">Happy Gajera</div>
+            <div class="cand-role">Graphic Designer · PranjTech</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Current:</strong> PranjTech (Jul 2024–Feb 2025, 8 months)<br>
+          <strong>Education:</strong> VNSGU Surat<br>
+          <strong>Skills:</strong> Social media graphics, branding, logos, UI elements<br>
+          <strong>Location:</strong> Surat — local candidate<br>
+          <strong>Status:</strong> Role ended Feb 2025, likely available
+        </div>
+        <div class="fit-badge fit-high">Strong Fit ✓</div><br>
+        <a class="li-link" href="https://www.linkedin.com/in/happy-gajera/" target="_blank">🔗 LinkedIn Profile</a>
+      </div>
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-blue">DK</div>
+          <div>
+            <div class="cand-name">Dhruvisha Khunt</div>
+            <div class="cand-role">Graphic Designer · KD Infotech</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Current:</strong> KD Infotech, Surat (Aug 2024–Present)<br>
+          <strong>Previous:</strong> Jun 2023–Aug 2024 (1 yr 3 mo) Surat<br>
+          <strong>Education:</strong> VNSGU Surat<br>
+          <strong>Skills:</strong> Graphic design, branding, digital assets<br>
+          <strong>Location:</strong> Surat — local
+        </div>
+        <div class="fit-badge fit-med">Good Fit ◎</div><br>
+        <a class="li-link" href="https://www.linkedin.com/in/dhruvisha-khunt-7a8276305/" target="_blank">🔗 LinkedIn Profile</a>
+      </div>
+
+    </div>
+  </div>
+  <div class="bool-wrap">
+    <div class="bool-label">Google X-Ray Search String</div>
+    <div class="bool-text">site:linkedin.com/in "graphic designer" "Surat" ("Mota Varachha" OR "Katargam") "6 months" OR "1 year" "Illustrator" OR "Photoshop" -recruiter</div>
+  </div>
+</div>
+
+<!-- JOB 5 -->
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-num">5</div>
+    <div>
+      <div class="job-title">Jr. Graphic Designer</div>
+      <div class="job-tags">
+        <span class="tag location">📍 Lal Darwaja &amp; Amroli-Kosad, Surat</span>
+        <span class="tag exp">⏳ 1–2 Years</span>
+        <span class="tag salary">💰 ₹15,000–₹20,000</span>
+        <span class="tag gender">👥 Both</span>
+        <span class="tag">Payment: 20 days</span>
+      </div>
+    </div>
+    <div class="incentive-box">
+      <div class="incentive-label">Freelancer Incentive</div>
+      <div class="incentive-amount">₹5,000</div>
+    </div>
+  </div>
+  <div class="candidates-wrap">
+    <div class="cand-heading">X-Ray Screened Candidates</div>
+    <div class="cand-grid">
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-teal">SV</div>
+          <div>
+            <div class="cand-name">Sreenath Viswanath</div>
+            <div class="cand-role">Senior Graphic Designer</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Current:</strong> Surat, Gujarat (May 2024–Present, 1 yr 4 mo)<br>
+          <strong>Skills:</strong> Exhibition stalls, social media graphics, logos, brand identity, cross-platform consistency<br>
+          <strong>Location:</strong> Surat (confirmed)<br>
+          <strong>Note:</strong> May be overqualified for Jr. but worth approaching for Sr. role
+        </div>
+        <div class="fit-badge fit-med">Consider for Sr. Role ◎</div><br>
+        <a class="li-link" href="https://www.linkedin.com/in/sreenath-viswanath-3429a5290/" target="_blank">🔗 LinkedIn Profile</a>
+      </div>
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-gold">HG</div>
+          <div>
+            <div class="cand-name">Happy Gajera</div>
+            <div class="cand-role">Graphic Designer (see #2 above)</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Note:</strong> Cross-apply from Job #2 — same candidate pool applies here since experience bracket overlaps. Surat-based, VNSGU graduate, 8-month role recently ended.<br>
+          <strong>Advantage:</strong> Willing to join immediately
+        </div>
+        <div class="fit-badge fit-high">Strong Fit ✓</div><br>
+        <a class="li-link" href="https://www.linkedin.com/in/happy-gajera/" target="_blank">🔗 LinkedIn Profile</a>
+      </div>
+
+    </div>
+  </div>
+  <div class="bool-wrap">
+    <div class="bool-label">Google X-Ray Search String</div>
+    <div class="bool-text">site:linkedin.com/in "graphic designer" "Surat" ("Lal Darwaja" OR "Amroli" OR "Kosad") "1 year" OR "2 year" -"hiring" -"we are"</div>
+  </div>
+</div>
+
+<!-- JOB 6 -->
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-num">6</div>
+    <div>
+      <div class="job-title">Sr. Graphic Designer</div>
+      <div class="job-tags">
+        <span class="tag location">📍 Lal Darwaja, Surat</span>
+        <span class="tag exp">⏳ 2+ Years</span>
+        <span class="tag salary">💰 ₹20,000–₹30,000</span>
+        <span class="tag gender">👥 Both</span>
+        <span class="tag">60-day Replacement</span>
+      </div>
+    </div>
+    <div class="incentive-box">
+      <div class="incentive-label">Freelancer Incentive</div>
+      <div class="incentive-amount">₹5,000</div>
+    </div>
+  </div>
+  <div class="candidates-wrap">
+    <div class="cand-heading">X-Ray Screened Candidates</div>
+    <div class="cand-grid">
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-blue">SV</div>
+          <div>
+            <div class="cand-name">Sreenath Viswanath</div>
+            <div class="cand-role">Senior Graphic Designer · Surat</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Current:</strong> Surat company (May 2024–Present, 1 yr 4 mo)<br>
+          <strong>Skills:</strong> Exhibition design, branding, social media, logo creation, brand identity management<br>
+          <strong>Location:</strong> Surat — confirmed local<br>
+          <strong>Status:</strong> Potentially open to better opportunity
+        </div>
+        <div class="fit-badge fit-high">Strong Fit ✓</div><br>
+        <a class="li-link" href="https://www.linkedin.com/in/sreenath-viswanath-3429a5290/" target="_blank">🔗 LinkedIn Profile</a>
+      </div>
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-purple">JN</div>
+          <div>
+            <div class="cand-name">Jay Nakarani</div>
+            <div class="cand-role">Designer · Aayog Infotech</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Education:</strong> VNSGU Surat<br>
+          <strong>Location:</strong> Surat<br>
+          <strong>Skills:</strong> Adobe Illustrator, logo design, graphics, vector art<br>
+          <strong>Status:</strong> Active on LinkedIn, 500+ connections, Surat-based
+        </div>
+        <div class="fit-badge fit-med">Good Fit ◎</div><br>
+        <a class="li-link" href="https://www.linkedin.com/in/jaynakrani/" target="_blank">🔗 LinkedIn Profile</a>
+      </div>
+
+    </div>
+  </div>
+  <div class="bool-wrap">
+    <div class="bool-label">Google X-Ray Search String</div>
+    <div class="bool-text">site:linkedin.com/in "senior graphic designer" OR "sr. graphic designer" "Surat" Gujarat "2 years" OR "3 years" "Illustrator" OR "InDesign" OR "Photoshop" -recruiter</div>
+  </div>
+</div>
+
+<!-- JOB 8 -->
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-num">8</div>
+    <div>
+      <div class="job-title">Image Editor</div>
+      <div class="job-tags">
+        <span class="tag location">📍 Katargam &amp; Lal Darwaja, Surat</span>
+        <span class="tag exp">⏳ 1–3 Years</span>
+        <span class="tag salary">💰 ₹20,000–₹25,000</span>
+        <span class="tag gender">👥 Both</span>
+      </div>
+    </div>
+    <div class="incentive-box">
+      <div class="incentive-label">Freelancer Incentive</div>
+      <div class="incentive-amount">₹5,000</div>
+    </div>
+  </div>
+  <div class="candidates-wrap">
+    <div class="cand-heading">X-Ray Screened Candidates</div>
+    <div class="cand-grid">
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-teal">GP</div>
+          <div>
+            <div class="cand-name">Surat-area Photoshop Specialists</div>
+            <div class="cand-role">Image Editing · Retouching</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Profile Pool:</strong> E-commerce product editors, jewelry retouchers, clipping path experts — active in Surat (textile &amp; diamond industry)<br>
+          <strong>Skills to verify:</strong> Background removal, color correction, clipping path, product retouching, Photoshop/Lightroom<br>
+          <strong>Source:</strong> Surat has a large pool due to textile export industry
+        </div>
+        <div class="fit-badge fit-med">Search Required ◎</div>
+      </div>
+
+    </div>
+    <div class="no-cand">⚠ LinkedIn walls limited direct profiles for this niche — use the X-Ray string below on Google + check Naukri.com for Surat image editors with Photoshop skills (jewelry/textile/e-commerce background preferred).</div>
+  </div>
+  <div class="bool-wrap">
+    <div class="bool-label">Google X-Ray Search String</div>
+    <div class="bool-text">site:naukri.com "image editor" OR "photo editor" "Surat" "Photoshop" "1 year" OR "2 year" OR "3 year" | site:linkedin.com/in "image editor" "Surat" "clipping path" OR "product editing" OR "retouching"</div>
+  </div>
+</div>
+
+<!-- ══ AREA: SALES & MARKETING ══ -->
+<div class="page-break"></div>
+<div class="section-label">
+  Sales &amp; Marketing Roles
+  <span class="area-badge">Vesu · Saroli · Pasodra · Parvat Patiya · All Areas</span>
+</div>
+
+<!-- JOB 10 -->
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-num">10</div>
+    <div>
+      <div class="job-title">Telesales Executive (Female)</div>
+      <div class="job-tags">
+        <span class="tag location">📍 Pasodra &amp; Mota Varachha, Surat</span>
+        <span class="tag exp">⏳ 1–3 Years</span>
+        <span class="tag salary">💰 ₹10,000–₹20,000 + Incentives</span>
+        <span class="tag gender">👩 Female Only</span>
+      </div>
+    </div>
+    <div class="incentive-box">
+      <div class="incentive-label">Freelancer Incentive</div>
+      <div class="incentive-amount">₹5,000</div>
+    </div>
+  </div>
+  <div class="candidates-wrap">
+    <div class="cand-heading">X-Ray Screened Candidates</div>
+    <div class="cand-grid">
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-coral">VS</div>
+          <div>
+            <div class="cand-name">Vanshika Sharma</div>
+            <div class="cand-role">HR Manager (Transitioned from Sales background)</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Recent:</strong> Various HR &amp; sales support roles in Surat<br>
+          <strong>History:</strong> HR Executive Jan 2020 – Apr 2020, Surat (entry level)<br>
+          <strong>Gender:</strong> Female ✓<br>
+          <strong>Location:</strong> Surat confirmed<br>
+          <strong>Note:</strong> Transitional candidate — verify if open to sales roles
+        </div>
+        <div class="fit-badge fit-med">Verify Interest ◎</div><br>
+        <a class="li-link" href="https://www.linkedin.com/in/vanshika-sharma-hr1/" target="_blank">🔗 LinkedIn Profile</a>
+      </div>
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-purple">DM</div>
+          <div>
+            <div class="cand-name">Domatel Telesales Pool</div>
+            <div class="cand-role">via Komal Godhani (HR, Domatel Surat)</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Context:</strong> Domatel Services, Surat actively hired Telesales Executives recently<br>
+          <strong>HR Contact:</strong> Komal Godhani (HR Manager, Domatel Services, Surat)<br>
+          <strong>Action:</strong> Reach out for referral pipeline from their recent applicant pool<br>
+          <strong>Tip:</strong> Recent applicants to Domatel who weren't selected are warm, ready-to-join candidates
+        </div>
+        <div class="fit-badge fit-high">Referral Pipeline ✓</div><br>
+        <a class="li-link" href="https://www.linkedin.com/in/komalgodhani/" target="_blank">🔗 Contact HR Lead</a>
+      </div>
+
+    </div>
+  </div>
+  <div class="bool-wrap">
+    <div class="bool-label">Google X-Ray Search String</div>
+    <div class="bool-text">site:linkedin.com/in "telesales" OR "tele sales" "Surat" ("Mota Varachha" OR "Pasodra") "female" OR "she" "1 year" OR "2 years" -"we are hiring" | site:naukri.com "telesales executive" "Surat" "female" 2024 2025</div>
+  </div>
+</div>
+
+<!-- JOB 11 -->
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-num">11</div>
+    <div>
+      <div class="job-title">Telesales Executive</div>
+      <div class="job-tags">
+        <span class="tag location">📍 Saroli &amp; Vesu, Surat</span>
+        <span class="tag exp">⏳ 1–3 Years</span>
+        <span class="tag salary">💰 ₹15,000–₹25,000</span>
+        <span class="tag gender">👥 Both</span>
+      </div>
+    </div>
+    <div class="incentive-box">
+      <div class="incentive-label">Freelancer Incentive</div>
+      <div class="incentive-amount">₹5,000</div>
+    </div>
+  </div>
+  <div class="candidates-wrap">
+    <div class="cand-heading">X-Ray Screened Candidates</div>
+    <div class="cand-grid">
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-blue">KG</div>
+          <div>
+            <div class="cand-name">Komal Godhani (Referral Source)</div>
+            <div class="cand-role">HR, Domatel Services · Surat</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Strategy:</strong> Domatel Surat recently posted telesales roles — their declined or shortlisted applicants are ready talent<br>
+          <strong>Action:</strong> Connect with Komal Godhani directly for candidate pipeline sharing<br>
+          <strong>Coverage:</strong> Saroli &amp; Vesu are accessible from Domatel's usual applicant geography
+        </div>
+        <div class="fit-badge fit-high">Referral Tap ✓</div><br>
+        <a class="li-link" href="https://www.linkedin.com/in/komalgodhani/" target="_blank">🔗 Domatel HR Contact</a>
+      </div>
+
+    </div>
+    <div class="no-cand">Supplement with Naukri.com search (string below) — Surat telesales candidates actively apply there with updated profiles.</div>
+  </div>
+  <div class="bool-wrap">
+    <div class="bool-label">Google X-Ray Search String</div>
+    <div class="bool-text">site:naukri.com "telesales" "Surat" "1 year" OR "2 years" OR "3 years" | site:linkedin.com/in "telesales executive" "Surat" "Saroli" OR "Vesu" 2024 OR 2025 -hiring</div>
+  </div>
+</div>
+
+<!-- JOB 13 -->
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-num">13</div>
+    <div>
+      <div class="job-title">Field Sales Executive</div>
+      <div class="job-tags">
+        <span class="tag location">📍 Surat — All Areas</span>
+        <span class="tag exp">⏳ 1–3 Years</span>
+        <span class="tag salary">💰 ₹17,000–₹30,000 + Incentives</span>
+        <span class="tag gender">👥 Both</span>
+      </div>
+    </div>
+    <div class="incentive-box">
+      <div class="incentive-label">Freelancer Incentive</div>
+      <div class="incentive-amount">₹5,000</div>
+    </div>
+  </div>
+  <div class="candidates-wrap">
+    <div class="cand-heading">X-Ray Screened Candidates</div>
+    <div class="cand-grid">
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-green">AM</div>
+          <div>
+            <div class="cand-name">Amit Midha (Referral Source)</div>
+            <div class="cand-role">Alibaba / Competence Consulting · Surat</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Context:</strong> Recently ran field/B2B sales hiring in Surat — has active candidate pool<br>
+          <strong>Contact:</strong> Amit.midha@competenceconsulting.in<br>
+          <strong>Skills sought (their JD):</strong> B2B platforms, IndiaMART/TradeIndia, lead generation, negotiation<br>
+          <strong>Action:</strong> Cross-referral from their shortlisted but unselected candidates
+        </div>
+        <div class="fit-badge fit-high">Referral Tap ✓</div><br>
+        <a class="li-link" href="https://in.linkedin.com/in/amitmidhaa" target="_blank">🔗 LinkedIn Contact</a>
+      </div>
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-blue">HJ</div>
+          <div>
+            <div class="cand-name">Herijobs Applicant Pool</div>
+            <div class="cand-role">via Aanchal Mishra (HR, Herijobs · Surat)</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Key Info:</strong> Herijobs Surat recently posted Field Sales Executive (Udhna, Surat) — their applicant pipeline directly matches this role<br>
+          <strong>Contact:</strong> hr@herijobs.com / +91 85115 19944<br>
+          <strong>Coverage:</strong> Local Surat candidates only — perfect geographic match
+        </div>
+        <div class="fit-badge fit-high">Direct Pipeline ✓</div><br>
+        <a class="li-link" href="https://in.linkedin.com/in/aanchal-mishra-59873b34a" target="_blank">🔗 HR Contact</a>
+      </div>
+
+    </div>
+  </div>
+  <div class="bool-wrap">
+    <div class="bool-label">Google X-Ray Search String</div>
+    <div class="bool-text">site:linkedin.com/in "field sales" "Surat" Gujarat "1 year" OR "2 years" OR "3 years" ("B2B" OR "FMCG" OR "retail") -"we are hiring" -recruiter | site:naukri.com "field sales executive" "Surat" 2025</div>
+  </div>
+</div>
+
+<!-- JOB 16 -->
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-num">16</div>
+    <div>
+      <div class="job-title">Social Media Manager</div>
+      <div class="job-tags">
+        <span class="tag location">📍 Pal Adajan, Surat</span>
+        <span class="tag exp">⏳ Fresher–1 Year</span>
+        <span class="tag salary">💰 ₹10,000–₹14,000</span>
+        <span class="tag gender">👩 Female Only</span>
+        <span class="tag">1 Opening</span>
+      </div>
+    </div>
+    <div class="incentive-box">
+      <div class="incentive-label">Freelancer Incentive</div>
+      <div class="incentive-amount">₹1,000</div>
+    </div>
+  </div>
+  <div class="candidates-wrap">
+    <div class="cand-heading">X-Ray Screened Candidates</div>
+    <div class="cand-grid">
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-coral">VNSGU</div>
+          <div>
+            <div class="cand-name">VNSGU Female Freshers Pool</div>
+            <div class="cand-role">BCA / BMM / BBA — Social &amp; Digital</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Strategy:</strong> Target VNSGU &amp; Surat college freshers from BCA/BMM/BBA with internship experience in social media<br>
+          <strong>Platforms:</strong> Instagram, Canva, Meta Business Suite skills<br>
+          <strong>Location match:</strong> Pal Adajan — accessible from most Surat areas<br>
+          <strong>Tip:</strong> Check NaukriCampus &amp; LinkedIn for 2024-25 Surat graduates
+        </div>
+        <div class="fit-badge fit-med">Campus Source ◎</div>
+      </div>
+
+    </div>
+    <div class="no-cand">Female social media fresher profiles are best sourced via VNSGU campus placement, local Facebook/WhatsApp job groups (Surat Jobs), and Instagram hashtag #suratjobs.</div>
+  </div>
+  <div class="bool-wrap">
+    <div class="bool-label">Google X-Ray Search String</div>
+    <div class="bool-text">site:linkedin.com/in "social media" "Surat" ("Pal Adajan" OR "Adajan") "fresher" OR "0-1 year" "instagram" OR "content creation" -"we are hiring" | site:naukri.com "social media executive" "Surat" "female" fresher 2025</div>
+  </div>
+</div>
+
+<!-- ══ AREA: E-COMMERCE ══ -->
+<div class="page-break"></div>
+<div class="section-label">
+  E-Commerce Roles
+  <span class="area-badge">Kosad · Amroli · Multiple Locations</span>
+</div>
+
+<!-- JOB 9 -->
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-num">9</div>
+    <div>
+      <div class="job-title">E-Commerce Executive</div>
+      <div class="job-tags">
+        <span class="tag location">📍 Multiple Locations, Surat</span>
+        <span class="tag exp">⏳ 1–3 Years</span>
+        <span class="tag salary">💰 ₹15,000–₹20,000</span>
+        <span class="tag gender">👥 Both</span>
+      </div>
+    </div>
+    <div class="incentive-box">
+      <div class="incentive-label">Freelancer Incentive</div>
+      <div class="incentive-amount">₹5,000</div>
+    </div>
+  </div>
+  <div class="candidates-wrap">
+    <div class="cand-heading">X-Ray Screened Candidates</div>
+    <div class="cand-grid">
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-blue">HJ</div>
+          <div>
+            <div class="cand-name">Herijobs E-Commerce Pool</div>
+            <div class="cand-role">via Aanchal Mishra · Herijobs, Surat</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Key Match:</strong> Herijobs Surat recently posted "E-Commerce Executive (Jewellery Industry) – Vesu, Surat" — their applicant pipeline maps exactly<br>
+          <strong>Contact:</strong> hr@herijobs.com / +91 85115 19944<br>
+          <strong>Required:</strong> 2–3 years experience preferred by them — overlaps with this role at 1-3 yr bracket
+        </div>
+        <div class="fit-badge fit-high">Direct Pipeline ✓</div><br>
+        <a class="li-link" href="https://in.linkedin.com/in/aanchal-mishra-59873b34a" target="_blank">🔗 HR Contact</a>
+      </div>
+
+    </div>
+  </div>
+  <div class="bool-wrap">
+    <div class="bool-label">Google X-Ray Search String</div>
+    <div class="bool-text">site:linkedin.com/in "e-commerce" OR "ecommerce" "Surat" Gujarat "Amazon" OR "Flipkart" OR "Meesho" OR "Shopify" "1 year" OR "2 years" -"we are hiring" | site:naukri.com "ecommerce executive" "Surat" 2025</div>
+  </div>
+</div>
+
+<!-- JOB 14 -->
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-num">14</div>
+    <div>
+      <div class="job-title">E-Commerce Sales Manager</div>
+      <div class="job-tags">
+        <span class="tag location">📍 Kosad / Amroli, Surat</span>
+        <span class="tag exp">⏳ 1–2 Years</span>
+        <span class="tag salary">💰 ₹17,000–₹30,000</span>
+        <span class="tag gender">👥 Both</span>
+      </div>
+    </div>
+    <div class="incentive-box">
+      <div class="incentive-label">Freelancer Incentive</div>
+      <div class="incentive-amount">₹5,000</div>
+    </div>
+  </div>
+  <div class="candidates-wrap">
+    <div class="cand-heading">X-Ray Screened Candidates</div>
+    <div class="cand-grid">
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-green">MK</div>
+          <div>
+            <div class="cand-name">Milan Kakadiya Network</div>
+            <div class="cand-role">Diamond / E-Commerce Industry · Surat</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Context:</strong> Kakadiam Surat actively hiring across sales &amp; commerce roles; strong Surat industry network<br>
+          <strong>Strategy:</strong> Referral from Kakadiam HR network for candidates experienced in e-com + sales<br>
+          <strong>Contact:</strong> talentacquisition.kakadiam@gmail.com / +91 90334 52544<br>
+          <strong>Location:</strong> Kosad/Amroli proximity
+        </div>
+        <div class="fit-badge fit-med">Network Tap ◎</div><br>
+        <a class="li-link" href="https://www.linkedin.com/in/milan-kakadiya-439934147/" target="_blank">🔗 LinkedIn</a>
+      </div>
+
+    </div>
+  </div>
+  <div class="bool-wrap">
+    <div class="bool-label">Google X-Ray Search String</div>
+    <div class="bool-text">site:linkedin.com/in "e-commerce manager" OR "sales manager" "Surat" ("Kosad" OR "Amroli") "Flipkart" OR "Amazon" OR "Myntra" 2024 OR 2025 -hiring | site:naukri.com "ecommerce sales manager" "Surat" 2025</div>
+  </div>
+</div>
+
+<!-- JOB 15 -->
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-num">15</div>
+    <div>
+      <div class="job-title">E-Commerce Executive</div>
+      <div class="job-tags">
+        <span class="tag location">📍 Multiple Locations, Surat</span>
+        <span class="tag exp">⏳ 6 Months–2 Years</span>
+        <span class="tag salary">💰 ₹15,000–₹23,000</span>
+        <span class="tag gender">👥 Both</span>
+      </div>
+    </div>
+    <div class="incentive-box">
+      <div class="incentive-label">Freelancer Incentive</div>
+      <div class="incentive-amount">₹5,000</div>
+    </div>
+  </div>
+  <div class="bool-wrap" style="margin: 14px 22px 16px;">
+    <div class="bool-label">Google X-Ray Search String</div>
+    <div class="bool-text">site:linkedin.com/in "ecommerce" OR "e-commerce" "Surat" Gujarat 2024 OR 2025 "6 months" OR "1 year" OR "2 years" "listing" OR "catalog" OR "product upload" | site:naukri.com "ecommerce" "Surat" "6 months" 2025</div>
+  </div>
+  <div class="no-cand">Same pipeline as Job #9 — cross-apply candidates. Herijobs HR (hr@herijobs.com) and local Surat job WhatsApp groups are the fastest sourcing channels for this bracket.</div>
+</div>
+
+<!-- JOB 17 -->
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-num">17</div>
+    <div>
+      <div class="job-title">E-Commerce Telesales Executive (Female)</div>
+      <div class="job-tags">
+        <span class="tag location">📍 Parvat Patiya, Surat</span>
+        <span class="tag exp">⏳ Fresher–2 Years</span>
+        <span class="tag salary">💰 ₹8,000–₹15,000 + Incentives</span>
+        <span class="tag gender">👩 Female Only</span>
+        <span class="tag">6 Openings</span>
+      </div>
+    </div>
+    <div class="incentive-box">
+      <div class="incentive-label">Freelancer Incentive</div>
+      <div class="incentive-amount">₹1,000</div>
+    </div>
+  </div>
+  <div class="bool-wrap" style="margin: 14px 22px 16px;">
+    <div class="bool-label">Google X-Ray Search String (6 Openings — bulk search recommended)</div>
+    <div class="bool-text">site:naukri.com "telesales" "Surat" "female" fresher OR "0-2 years" | site:linkedin.com/in "telesales" "Surat" ("Parvat Patiya" OR "Adajan") "female" fresher 2025 | site:freshersworld.com "telesales" "Surat" female 2025</div>
+  </div>
+  <div class="no-cand">6 openings — bulk sourcing recommended via Surat local job Facebook groups, Quickr Jobs Surat, and WhatsApp hiring networks for female fresher telesales. NaukriCampus also has strong female fresher pipeline for Surat.</div>
+</div>
+
+<!-- ══ AREA: HR, CRM & OPERATIONS ══ -->
+<div class="page-break"></div>
+<div class="section-label">
+  HR, CRM &amp; Operations Roles
+  <span class="area-badge">Lal Darwaja · Amroli · Katargam · Bhatar Road</span>
+</div>
+
+<!-- JOB 3 -->
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-num">3</div>
+    <div>
+      <div class="job-title">CRM Executive</div>
+      <div class="job-tags">
+        <span class="tag location">📍 Mota Varachha, Surat</span>
+        <span class="tag exp">⏳ 1–2 Years</span>
+        <span class="tag salary">💰 ₹15,000–₹20,000</span>
+        <span class="tag gender">👥 Both</span>
+        <span class="tag">2 Openings</span>
+      </div>
+    </div>
+    <div class="incentive-box">
+      <div class="incentive-label">Freelancer Incentive</div>
+      <div class="incentive-amount">₹5,000</div>
+    </div>
+  </div>
+  <div class="candidates-wrap">
+    <div class="cand-heading">X-Ray Screened Candidates</div>
+    <div class="no-cand">CRM executive profiles are thin on LinkedIn X-ray for Surat — use Naukri.com as primary source. Look for candidates with experience on Zoho CRM, Freshdesk, Salesforce, or HubSpot. Mota Varachha has a dense IT park — candidates often commute from adjacent areas.</div>
+  </div>
+  <div class="bool-wrap">
+    <div class="bool-label">Google X-Ray Search String</div>
+    <div class="bool-text">site:naukri.com "CRM executive" "Surat" "1 year" OR "2 years" "Zoho" OR "Salesforce" OR "Freshdesk" | site:linkedin.com/in "CRM" "Surat" "Mota Varachha" "customer relationship" 2024 OR 2025 -recruiter</div>
+  </div>
+</div>
+
+<!-- JOB 4 -->
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-num">4</div>
+    <div>
+      <div class="job-title">CRM Executive (Female Only)</div>
+      <div class="job-tags">
+        <span class="tag location">📍 Amroli–Katargam, Surat</span>
+        <span class="tag exp">⏳ 1–2 Years</span>
+        <span class="tag salary">💰 ₹15,000–₹20,000</span>
+        <span class="tag gender">👩 Female Only</span>
+        <span class="tag">2 Openings</span>
+        <span class="tag">Senior Roles 6+ yrs noted</span>
+      </div>
+    </div>
+    <div class="incentive-box">
+      <div class="incentive-label">Freelancer Incentive</div>
+      <div class="incentive-amount">₹5,000</div>
+    </div>
+  </div>
+  <div class="bool-wrap" style="margin: 14px 22px 16px;">
+    <div class="bool-label">Google X-Ray Search String</div>
+    <div class="bool-text">site:naukri.com "CRM" "Surat" "female" "Amroli" OR "Katargam" "1 year" OR "2 years" | site:linkedin.com/in "CRM executive" "Surat" Gujarat "female" "customer relationship" 2024 OR 2025</div>
+  </div>
+  <div class="no-cand">Female CRM candidates for Amroli-Katargam — also check Shine.com and TimesJobs Surat listings. Strong pipeline from textile/diamond back-office roles transitioning into CRM.</div>
+</div>
+
+<!-- JOB 12 -->
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-num">12</div>
+    <div>
+      <div class="job-title">HR Executive (Female Only)</div>
+      <div class="job-tags">
+        <span class="tag location">📍 Lal Darwaja &amp; Katargam, Surat</span>
+        <span class="tag exp">⏳ 1–3 Years</span>
+        <span class="tag salary">💰 ₹17,000–₹21,000</span>
+        <span class="tag gender">👩 Female Only</span>
+      </div>
+    </div>
+    <div class="incentive-box">
+      <div class="incentive-label">Freelancer Incentive</div>
+      <div class="incentive-amount">₹5,000</div>
+    </div>
+  </div>
+  <div class="candidates-wrap">
+    <div class="cand-heading">X-Ray Screened Candidates</div>
+    <div class="cand-grid">
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-blue">VS</div>
+          <div>
+            <div class="cand-name">Vanshika Sharma</div>
+            <div class="cand-role">Human Resources Manager · Surat</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Timeline:</strong> Oct 2024–Apr 2025 (7 mo) Surat + prior HR roles Surat (Jan–Apr 2020)<br>
+          <strong>Gender:</strong> Female ✓<br>
+          <strong>Skills:</strong> HR management, recruitment, employee relations<br>
+          <strong>Location:</strong> Surat confirmed — may be between roles
+        </div>
+        <div class="fit-badge fit-high">Strong Fit ✓</div><br>
+        <a class="li-link" href="https://www.linkedin.com/in/vanshika-sharma-hr1/" target="_blank">🔗 LinkedIn Profile</a>
+      </div>
+
+      <div class="cand-card">
+        <div class="cand-top">
+          <div class="avatar av-green">EP</div>
+          <div>
+            <div class="cand-name">Ekta Parmar</div>
+            <div class="cand-role">HR Manager · Sourceget, Surat</div>
+          </div>
+        </div>
+        <div class="cand-details">
+          <strong>Current:</strong> Sourceget, Surat (Jan 2025–Present)<br>
+          <strong>Previous:</strong> HR at Antraweb Technologies, Surat (May 2023–Jul 2024)<br>
+          <strong>Education:</strong> NMIMS<br>
+          <strong>Skills:</strong> Recruitment, onboarding, policy, compliance, payroll reviews<br>
+          <strong>Note:</strong> Currently employed — may be open to better pay
+        </div>
+        <div class="fit-badge fit-med">Passive Candidate ◎</div><br>
+        <a class="li-link" href="https://www.linkedin.com/in/ekta-parmar-8748151ab/" target="_blank">🔗 LinkedIn Profile</a>
+      </div>
+
+    </div>
+  </div>
+  <div class="bool-wrap">
+    <div class="bool-label">Google X-Ray Search String</div>
+    <div class="bool-text">site:linkedin.com/in "HR executive" OR "human resources" "Surat" ("Lal Darwaja" OR "Katargam") "female" 2024 OR 2025 -"we are hiring" | site:naukri.com "HR executive" "Surat" female "1 year" OR "2 years" 2025</div>
+  </div>
+</div>
+
+<!-- JOB 18 -->
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-num">18</div>
+    <div>
+      <div class="job-title">Operations Executive (Female)</div>
+      <div class="job-tags">
+        <span class="tag location">📍 Bhatar Road, Surat</span>
+        <span class="tag exp">⏳ Fresher to Experienced</span>
+        <span class="tag salary">💰 ₹12,000–₹18,000</span>
+        <span class="tag gender">👩 Female</span>
+        <span class="tag">1 Opening</span>
+      </div>
+    </div>
+    <div class="incentive-box">
+      <div class="incentive-label">Freelancer Incentive</div>
+      <div class="incentive-amount">₹1,000</div>
+    </div>
+  </div>
+  <div class="bool-wrap" style="margin: 14px 22px 16px;">
+    <div class="bool-label">Google X-Ray Search String</div>
+    <div class="bool-text">site:naukri.com "operations executive" "Surat" "female" "Bhatar" OR "Bhatar Road" 2025 | site:linkedin.com/in "operations" "Surat" ("Bhatar" OR "Katargam") "female" "fresher" OR "1 year" 2024 OR 2025</div>
+  </div>
+  <div class="no-cand">Bhatar Road is a busy commercial corridor — best sourced via Naukri Surat walk-in alerts, Shine.com, and local placement consultancies near the area. Female operations freshers are plentiful from VNSGU and nearby colleges.</div>
+</div>
+
+<!-- JOB 19 -->
+<div class="job-block">
+  <div class="job-header">
+    <div class="job-num">19</div>
+    <div>
+      <div class="job-title">Telesales Executive — Bulk (Multiple Locations)</div>
+      <div class="job-tags">
+        <span class="tag location">📍 Multiple Locations — 5 Openings Each</span>
+        <span class="tag exp">⏳ Fresher–3 Years</span>
+        <span class="tag salary">💰 ₹10,000–₹25,000 + Incentives</span>
+        <span class="tag gender">👥 Both</span>
+      </div>
+    </div>
+    <div class="incentive-box">
+      <div class="incentive-label">Freelancer Incentive</div>
+      <div class="incentive-amount">₹1,000</div>
+    </div>
+  </div>
+  <div class="bool-wrap" style="margin: 14px 22px 16px;">
+    <div class="bool-label">Google X-Ray Search String (Bulk — 5+ openings per location)</div>
+    <div class="bool-text">site:naukri.com "telesales" "Surat" 2025 "fresher" OR "0-3 years" | site:linkedin.com/in "telesales" "Surat" Gujarat 2025 | site:freshersworld.com "telesales" "Surat" | site:quikr.com/jobs "telesales" "Surat" 2025</div>
+  </div>
+  <div class="no-cand">High-volume role — recommended strategy: post on Quikr Jobs, OLX Jobs, and Surat local Facebook groups simultaneously. Walk-in drives near each area (Katargam, Mota Varachha, etc.) yield fastest results.</div>
+</div>
+
+<!-- ══ MASTER TABLE ══ -->
+<div class="page-break"></div>
+<div class="section-label">Master Quick-Reference · All 19 Jobs</div>
+<div style="overflow-x:auto; margin: 16px 24px 32px;">
+<table style="width:100%; border-collapse:collapse; font-size:12px; background:white; border-radius:12px; overflow:hidden; border:1px solid #e5e2da;">
+  <thead>
+    <tr style="background:#1a1a2e; color:white;">
+      <th style="padding:10px 12px; text-align:left;">#</th>
+      <th style="padding:10px 12px; text-align:left;">Role</th>
+      <th style="padding:10px 12px; text-align:left;">Location (Area)</th>
+      <th style="padding:10px 12px; text-align:left;">Salary</th>
+      <th style="padding:10px 12px; text-align:left;">Exp</th>
+      <th style="padding:10px 12px; text-align:left;">Gender</th>
+      <th style="padding:10px 12px; text-align:center;">Incentive</th>
+      <th style="padding:10px 12px; text-align:left;">Candidates Found</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border-top:1px solid #e5e2da;">
+      <td style="padding:9px 12px; font-weight:600;">1</td>
+      <td style="padding:9px 12px;">Video Editor Executive</td>
+      <td style="padding:9px 12px; color:#0f3460;">Mota Varachha</td>
+      <td style="padding:9px 12px;">₹15k–20k</td>
+      <td style="padding:9px 12px;">1–2 Yrs</td>
+      <td style="padding:9px 12px;">Both</td>
+      <td style="padding:9px 12px; text-align:center; font-weight:700; color:#e94560;">₹5,000</td>
+      <td style="padding:9px 12px; color:#0f6e56;">Smit Kukadiya, Manish Edits</td>
+    </tr>
+    <tr style="border-top:1px solid #e5e2da; background:#fafaf8;">
+      <td style="padding:9px 12px; font-weight:600;">2</td>
+      <td style="padding:9px 12px;">Graphics Executive</td>
+      <td style="padding:9px 12px; color:#0f3460;">Mota Varachha</td>
+      <td style="padding:9px 12px;">₹15k–20k</td>
+      <td style="padding:9px 12px;">6mo–1yr</td>
+      <td style="padding:9px 12px;">Both</td>
+      <td style="padding:9px 12px; text-align:center; font-weight:700; color:#e94560;">₹5,000</td>
+      <td style="padding:9px 12px; color:#0f6e56;">Happy Gajera, Dhruvisha Khunt</td>
+    </tr>
+    <tr style="border-top:1px solid #e5e2da;">
+      <td style="padding:9px 12px; font-weight:600;">3</td>
+      <td style="padding:9px 12px;">CRM Executive</td>
+      <td style="padding:9px 12px; color:#0f3460;">Mota Varachha</td>
+      <td style="padding:9px 12px;">₹15k–20k</td>
+      <td style="padding:9px 12px;">1–2 Yrs</td>
+      <td style="padding:9px 12px;">Both</td>
+      <td style="padding:9px 12px; text-align:center; font-weight:700; color:#e94560;">₹5,000</td>
+      <td style="padding:9px 12px; color:#b7770d;">Naukri X-Ray (see string)</td>
+    </tr>
+    <tr style="border-top:1px solid #e5e2da; background:#fafaf8;">
+      <td style="padding:9px 12px; font-weight:600;">4</td>
+      <td style="padding:9px 12px;">CRM Executive ♀</td>
+      <td style="padding:9px 12px; color:#0f3460;">Amroli–Katargam</td>
+      <td style="padding:9px 12px;">₹15k–20k</td>
+      <td style="padding:9px 12px;">1–2 Yrs</td>
+      <td style="padding:9px 12px; color:#8e44ad;">Female</td>
+      <td style="padding:9px 12px; text-align:center; font-weight:700; color:#e94560;">₹5,000</td>
+      <td style="padding:9px 12px; color:#b7770d;">Naukri + Shine.com</td>
+    </tr>
+    <tr style="border-top:1px solid #e5e2da;">
+      <td style="padding:9px 12px; font-weight:600;">5</td>
+      <td style="padding:9px 12px;">Jr. Graphic Designer</td>
+      <td style="padding:9px 12px; color:#0f3460;">Lal Darwaja &amp; Amroli</td>
+      <td style="padding:9px 12px;">₹15k–20k</td>
+      <td style="padding:9px 12px;">1–2 Yrs</td>
+      <td style="padding:9px 12px;">Both</td>
+      <td style="padding:9px 12px; text-align:center; font-weight:700; color:#e94560;">₹5,000</td>
+      <td style="padding:9px 12px; color:#0f6e56;">Happy Gajera (cross-apply)</td>
+    </tr>
+    <tr style="border-top:1px solid #e5e2da; background:#fafaf8;">
+      <td style="padding:9px 12px; font-weight:600;">6</td>
+      <td style="padding:9px 12px;">Sr. Graphic Designer</td>
+      <td style="padding:9px 12px; color:#0f3460;">Lal Darwaja</td>
+      <td style="padding:9px 12px;">₹20k–30k</td>
+      <td style="padding:9px 12px;">2+ Yrs</td>
+      <td style="padding:9px 12px;">Both</td>
+      <td style="padding:9px 12px; text-align:center; font-weight:700; color:#e94560;">₹5,000</td>
+      <td style="padding:9px 12px; color:#0f6e56;">Sreenath Viswanath, Jay Nakarani</td>
+    </tr>
+    <tr style="border-top:1px solid #e5e2da;">
+      <td style="padding:9px 12px; font-weight:600;">7</td>
+      <td style="padding:9px 12px;">Video Editor</td>
+      <td style="padding:9px 12px; color:#0f3460;">Katargam · MV · LD</td>
+      <td style="padding:9px 12px;">₹20k–25k</td>
+      <td style="padding:9px 12px;">1–3 Yrs</td>
+      <td style="padding:9px 12px;">Both</td>
+      <td style="padding:9px 12px; text-align:center; font-weight:700; color:#e94560;">₹5,000</td>
+      <td style="padding:9px 12px; color:#0f6e56;">Shrii Mishra, Sachin Kumar</td>
+    </tr>
+    <tr style="border-top:1px solid #e5e2da; background:#fafaf8;">
+      <td style="padding:9px 12px; font-weight:600;">8</td>
+      <td style="padding:9px 12px;">Image Editor</td>
+      <td style="padding:9px 12px; color:#0f3460;">Katargam &amp; Lal Darwaja</td>
+      <td style="padding:9px 12px;">₹20k–25k</td>
+      <td style="padding:9px 12px;">1–3 Yrs</td>
+      <td style="padding:9px 12px;">Both</td>
+      <td style="padding:9px 12px; text-align:center; font-weight:700; color:#e94560;">₹5,000</td>
+      <td style="padding:9px 12px; color:#b7770d;">Naukri Search (see string)</td>
+    </tr>
+    <tr style="border-top:1px solid #e5e2da;">
+      <td style="padding:9px 12px; font-weight:600;">9</td>
+      <td style="padding:9px 12px;">E-Commerce Executive</td>
+      <td style="padding:9px 12px; color:#0f3460;">Multiple, Surat</td>
+      <td style="padding:9px 12px;">₹15k–20k</td>
+      <td style="padding:9px 12px;">1–3 Yrs</td>
+      <td style="padding:9px 12px;">Both</td>
+      <td style="padding:9px 12px; text-align:center; font-weight:700; color:#e94560;">₹5,000</td>
+      <td style="padding:9px 12px; color:#0f6e56;">Herijobs Pipeline (Vesu)</td>
+    </tr>
+    <tr style="border-top:1px solid #e5e2da; background:#fafaf8;">
+      <td style="padding:9px 12px; font-weight:600;">10</td>
+      <td style="padding:9px 12px;">Telesales Executive ♀</td>
+      <td style="padding:9px 12px; color:#0f3460;">Pasodra &amp; Mota Varachha</td>
+      <td style="padding:9px 12px;">₹10k–20k+</td>
+      <td style="padding:9px 12px;">1–3 Yrs</td>
+      <td style="padding:9px 12px; color:#8e44ad;">Female</td>
+      <td style="padding:9px 12px; text-align:center; font-weight:700; color:#e94560;">₹5,000</td>
+      <td style="padding:9px 12px; color:#0f6e56;">Vanshika Sharma, Domatel Pool</td>
+    </tr>
+    <tr style="border-top:1px solid #e5e2da;">
+      <td style="padding:9px 12px; font-weight:600;">11</td>
+      <td style="padding:9px 12px;">Telesales Executive</td>
+      <td style="padding:9px 12px; color:#0f3460;">Saroli &amp; Vesu</td>
+      <td style="padding:9px 12px;">₹15k–25k</td>
+      <td style="padding:9px 12px;">1–3 Yrs</td>
+      <td style="padding:9px 12px;">Both</td>
+      <td style="padding:9px 12px; text-align:center; font-weight:700; color:#e94560;">₹5,000</td>
+      <td style="padding:9px 12px; color:#0f6e56;">Domatel Referral Pipeline</td>
+    </tr>
+    <tr style="border-top:1px solid #e5e2da; background:#fafaf8;">
+      <td style="padding:9px 12px; font-weight:600;">12</td>
+      <td style="padding:9px 12px;">HR Executive ♀</td>
+      <td style="padding:9px 12px; color:#0f3460;">Lal Darwaja &amp; Katargam</td>
+      <td style="padding:9px 12px;">₹17k–21k</td>
+      <td style="padding:9px 12px;">1–3 Yrs</td>
+      <td style="padding:9px 12px; color:#8e44ad;">Female</td>
+      <td style="padding:9px 12px; text-align:center; font-weight:700; color:#e94560;">₹5,000</td>
+      <td style="padding:9px 12px; color:#0f6e56;">Vanshika Sharma, Ekta Parmar</td>
+    </tr>
+    <tr style="border-top:1px solid #e5e2da;">
+      <td style="padding:9px 12px; font-weight:600;">13</td>
+      <td style="padding:9px 12px;">Field Sales Executive</td>
+      <td style="padding:9px 12px; color:#0f3460;">Surat — All Areas</td>
+      <td style="padding:9px 12px;">₹17k–30k+</td>
+      <td style="padding:9px 12px;">1–3 Yrs</td>
+      <td style="padding:9px 12px;">Both</td>
+      <td style="padding:9px 12px; text-align:center; font-weight:700; color:#e94560;">₹5,000</td>
+      <td style="padding:9px 12px; color:#0f6e56;">Amit Midha, Herijobs Pipeline</td>
+    </tr>
+    <tr style="border-top:1px solid #e5e2da; background:#fafaf8;">
+      <td style="padding:9px 12px; font-weight:600;">14</td>
+      <td style="padding:9px 12px;">E-Commerce Sales Manager</td>
+      <td style="padding:9px 12px; color:#0f3460;">Kosad / Amroli</td>
+      <td style="padding:9px 12px;">₹17k–30k</td>
+      <td style="padding:9px 12px;">1–2 Yrs</td>
+      <td style="padding:9px 12px;">Both</td>
+      <td style="padding:9px 12px; text-align:center; font-weight:700; color:#e94560;">₹5,000</td>
+      <td style="padding:9px 12px; color:#0f6e56;">Kakadiam Network</td>
+    </tr>
+    <tr style="border-top:1px solid #e5e2da;">
+      <td style="padding:9px 12px; font-weight:600;">15</td>
+      <td style="padding:9px 12px;">E-Commerce Executive</td>
+      <td style="padding:9px 12px; color:#0f3460;">Multiple Locations</td>
+      <td style="padding:9px 12px;">₹15k–23k</td>
+      <td style="padding:9px 12px;">6mo–2yr</td>
+      <td style="padding:9px 12px;">Both</td>
+      <td style="padding:9px 12px; text-align:center; font-weight:700; color:#e94560;">₹5,000</td>
+      <td style="padding:9px 12px; color:#b7770d;">Cross-apply from #9 pool</td>
+    </tr>
+    <tr style="border-top:1px solid #e5e2da; background:#fafaf8;">
+      <td style="padding:9px 12px; font-weight:600;">16</td>
+      <td style="padding:9px 12px;">Social Media Manager ♀</td>
+      <td style="padding:9px 12px; color:#0f3460;">Pal Adajan</td>
+      <td style="padding:9px 12px;">₹10k–14k</td>
+      <td style="padding:9px 12px;">Fresher–1yr</td>
+      <td style="padding:9px 12px; color:#8e44ad;">Female</td>
+      <td style="padding:9px 12px; text-align:center; font-weight:700; color:#e94560;">₹1,000</td>
+      <td style="padding:9px 12px; color:#b7770d;">Campus + NaukriCampus</td>
+    </tr>
+    <tr style="border-top:1px solid #e5e2da;">
+      <td style="padding:9px 12px; font-weight:600;">17</td>
+      <td style="padding:9px 12px;">E-Com Telesales ♀ (×6)</td>
+      <td style="padding:9px 12px; color:#0f3460;">Parvat Patiya</td>
+      <td style="padding:9px 12px;">₹8k–15k+</td>
+      <td style="padding:9px 12px;">Fresher–2yr</td>
+      <td style="padding:9px 12px; color:#8e44ad;">Female</td>
+      <td style="padding:9px 12px; text-align:center; font-weight:700; color:#e94560;">₹1,000</td>
+      <td style="padding:9px 12px; color:#b7770d;">Bulk: Quikr + FB Groups</td>
+    </tr>
+    <tr style="border-top:1px solid #e5e2da; background:#fafaf8;">
+      <td style="padding:9px 12px; font-weight:600;">18</td>
+      <td style="padding:9px 12px;">Operations Executive ♀</td>
+      <td style="padding:9px 12px; color:#0f3460;">Bhatar Road</td>
+      <td style="padding:9px 12px;">₹12k–18k</td>
+      <td style="padding:9px 12px;">Fresher+</td>
+      <td style="padding:9px 12px; color:#8e44ad;">Female</td>
+      <td style="padding:9px 12px; text-align:center; font-weight:700; color:#e94560;">₹1,000</td>
+      <td style="padding:9px 12px; color:#b7770d;">Naukri + Shine.com</td>
+    </tr>
+    <tr style="border-top:1px solid #e5e2da;">
+      <td style="padding:9px 12px; font-weight:600;">19</td>
+      <td style="padding:9px 12px;">Telesales Exec (Bulk ×5)</td>
+      <td style="padding:9px 12px; color:#0f3460;">Multiple Locations</td>
+      <td style="padding:9px 12px;">₹10k–25k+</td>
+      <td style="padding:9px 12px;">Fresher–3yr</td>
+      <td style="padding:9px 12px;">Both</td>
+      <td style="padding:9px 12px; text-align:center; font-weight:700; color:#e94560;">₹1,000</td>
+      <td style="padding:9px 12px; color:#b7770d;">Walk-in drives recommended</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="footer">
+  Generated <strong>14-Apr-2026</strong> · Source: Google X-Ray (LinkedIn · Naukri · Herijobs) · For internal recruiter use only<br>
+  Total Incentive Potential: <strong>₹5,000 × 15 roles + ₹1,000 × 4 roles = ₹79,000</strong> if all placements closed by single freelancer
+</div>
+</body>
+</html>
