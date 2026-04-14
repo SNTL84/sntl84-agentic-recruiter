@@ -24,11 +24,22 @@ dist/
 build/
 .cache/
 
-# Environment files
+# Environment Files
 .env
 .env.local
 .env.*.local
+.env.production
 
-# Temporary files
+# GitHub
+GITHUB_TOKEN
+-.github/
+
+# Testing
+coverage/
+.tdms-static/
+.vs1settings
+
+# Tem. files
 *.tmp
 *.temp
+.png-cache/
