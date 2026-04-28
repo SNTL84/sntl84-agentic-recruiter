@@ -1,1 +1,120 @@
-PGRpdiBhbGlnbj0iY2VudGVyIj4KCiMg8J+kliBBZ2VudGljIFJlY3J1aXQgU2NyZWVuaW5nCiMjIEFJLVBvd2VyZWQgSGlyaW5nIE1vZHVsZQoKWyFbU3RhdHVzXShodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL3N0YXR1cy1hY3RpdmUtc3VjY2Vzcy5zdmcpXShodHRwczovL2dpdGh1Yi5jb20vU05UTDg0L0FnZW50aWMtUmVjcnVpdC1TY3JlZW5pbmcpClshW01hZGUgV2l0aF0oaHR0cHM6Ly9pbWcuc2hpZWxkcy5pby9iYWRnZS9tYWRlJTIwd2l0aC1BSSUyMCUyQiUyMEF1dG9tYXRpb24tZmY2OWI0LnN2ZyldKGh0dHBzOi8vZGVzaWRldmxvcGVyLmNvbS8pClshW1ZlcnNpb25dKGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2UvdmVyc2lvbi0yLjAtYmx1ZS5zdmcpXShodHRwczovL2dpdGh1Yi5jb20vU05UTDg0KQpbIVtMaWNlbnNlXShodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL2xpY2Vuc2UtTUlULWdyZWVuLnN2ZyBdKExJQ0VOU0UpCgpbIVtOZXRsaWZ5XShodHRwczovL2FwaS5uZXRsaWZ5LmNvbS9hcGkvdjEvYmFkZ2VzL2YwN2JjZGY3LWFjYjAtNDU2ZS04OTE0LWYxYTM0ZTI4OTExZS9kZXBsb3ktc3RhdHVzKV0oaHR0cHM6Ly9kZXNpZGV2bG9wZXIuY29tKQoKKipUcmFuc2Zvcm0gWW91ciBSZWNydWl0bWVudCBQcm9jZXNzIHdpdGggQWdlbnRpYyBBSSoqCgoqQXV0b21hdGUgV2hhdCdzIENvc3RpbmcgWW91IE1vbmV5wqAqIPCfmoAKCjwvZGl2PgoKLS0tCgojIyDwn5qAIE92ZXJ2aWV3CgoqKkFnZW50aWMgUmVjcnVpdCBTY3JlZW5pbmcqKiBpcyBhIGN1dHRpbmctZWRnZSBoaXJpbmcgbW9kdWxlIHRoYXQgbGV2ZXJhZ2VzIGFydGlmaWNpYWwgaW50ZWxsaWdlbmNlIHRvIHN0cmVhbWxpbmUgY2FuZGlkYXRlIHNjcmVlbmluZywgYXV0b21hdGUgdGVkaW91cyByZWNydWl0bWVudCB0YXNrcywgYW5kIGRlbGl2ZXIgdG9wLXRpZXIgdGFsZW50IGZhc3RlciB0aGFuIGV2ZXIgYmVmb3JlLgoKKipCdWlsdCBmb3IgZm91bmRlcnMgd2hvIG1vdmUgZmFzdCBhbmQgd2FzdGUgbm90aGluZy4qKgoKLS0tCgojIyDinKggS2V5IEZlYXR1cmVzCgp8IEZlYXR1cmUgfCBEZXNjcmlwdGlvbiB8IEJlbmVmaXQgfAp8LS0tLS0tLS0tfC0tLS0tLS0tLS0tLS18LS0tLS0tLS0tfAp8IPCfjq8gKipTbWFydCBNYXRjaGluZioqIHwgQUktcG93ZXJlZCBjYW5kaWRhdGUtam9iIGFsaWdubWVudCB8IDk1JSBhY2N1cmFjeSBpbiByb2xlIG1hdGNoaW5nIHwgCnwg4pqhICoqSW5zdGFudCBTY3JlZW5pbmcqKiB8IEF1dG9tYXRlZCByZXN1bWUgcGFyc2luZyAmIGFuYWx5c2lzIHwgU2F2ZSA4MCUgc2NyZWVuaW5nIHRpbWUgfAp8IPCfk4ogKipWaXN1YWwgQW5hbHl0aWNzKiogfCBJbnRlcmFjdGl2ZSBjYW5kaWRhdGUgZGFzaGJvYXJkIHwgRGF0YS1kcml2ZW4gZGVjaXNpb25zIHwKfCDwn5SXISoqTGlua2VkSW4gSW50ZWdyYXRpb24qKiB8IERpcmVjdCBwcm9maWxlIGVucmljaG1lbnQgfCBSaWNoIGNhbmRpZGF0ZSBpbnNpZ2h0cyB8Cnwg8J+SryAqKlJPSSBUcmFja2luZyoqIHwgQ29zdC1wZXItaGlyZSBhbmFseXRpY3MgfCBNYXhpbWl6ZSByZWNydWl0bWVudCBidWRnZXQgfAoKLS0tCgojIyDwn5ug77iPIFRlY2ggU3RhY2sKCjxwIGFsaWduPSJjZW50ZXIiPgogIDxpbWcgc3JjPSJodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL0hUTUw1LUUzNEYyNj9zdHlsZT1mb3ItdGhlLWJhZGdlJmxvZ289aHRtbDUmbG9nb0NvbG9yPXdoaXRlIiAvPgogIDxpbWcgc3JjPSJodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL0NTUzMtMTU3MkI2P3N0eWxlPWZvci10aGUtYmFkZ2UmbG9nbz1jc3M0JmxvZ29Db2xvcj13aGl0ZSIgLz4KICA8aW1nIHNyYz0iaHR0cHM6Ly9pbWcuc2hpZWxkcy5pby9iYWRnZS9KYXZhU2NyaXB0LUY3REYxRT9zdHlsZT1mb3ItdGhlLWJhZGdlJmxvZ289amF2YXNjcmlwdCZsb2dvQ29sb3I9YmxhY2siIC8+CiAgPGltZyBzcmM9Imh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2UvUE9zdE1hbi1GRTZBNjY/c3R5bGU9Zm9yLXRoZS1iYWRnZSZsb2dvPXBvc3RtYW4mbG9nb0NvbG9yPXdoaXRlIiAvPgogIDxpbWcgc3JjPSJodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL0h1YmJvdC04RjE4OUY_c3R5bGU9Zm9yLXRoZS1iYWRnZSZsb2dvPWh1YmJvdCZsb2dvQ29sb3I9d2hpdGUiIC8+CiAgPGltZyBzcmM9Imh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2UvQXp1cmUtMDA4OUNEMj9zdHlsZT1mb3ItdGhlLWJhZGdlJmxvZ289bWljcm9zb2Z0YXp1cmUmbG9nb0NvbG9yPXdoaXRlIiAvPgo8L3A+CgotLS0KCiMjIPCfk4ggV2h5IENob29zZSBBZ2VudGljIFJlY3J1aXQ/CgojIyMgRm9yIFJlY3J1aXRlcnMKLSDinIUgUmVkdWNlIHRpbWUtdG8taGlyZSBieSA3MCUKLSDinIUgRWxpbWluYXRlIG1hbnVhbCBzY3JlZW5pbmcgZ3J1bnQgd29yawotIOKchSBTb3VyY2UgcGFzc2l2ZSBjYW5kaWRhdGVzIGF1dG9tYXRpY2FsbHkKLSDinIUgQnVpbGQgdGFsZW50IHBpcGVsaW5lcyBvbiBhdXRvcGlsb3QKCiMjIyBGb3IgRm91bmRlcnMKLSDinIUgQ3V0IHJlY3J1aXRtZW50IGNvc3RzIGJ5IDYwJQotIOKchSBTY2FsZSBoaXJpbmcgd2l0aG91dCBzY2FsaW5nIGhlYWRjb3VudAotIOKchSBOZXZlciBtaXNzIHRvcCB0YWxlbnQgYWdhaW4KLSDinIUgRGF0YS1iYWNrZWQgaGlyaW5nIGRlY2lzaW9ucwoKLS0tCgojIyDwn46oIFZpc3VhbCBQcmV2aWV3CgpgYGAK4pSM4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSQCuKUgiAg8J+kliBBR0VOVElDIFJFQ1JVSVQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIOKUggrilIIgIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCAg4pSCCuKUgiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDilIIK4pSCICDwn5OLIEpvYjogU2VuaW9yIEZ1bGwtU3RhY2sgRGV2ZWxvcGVyICAgICAgICAgICAgICAgICAgICAgICAg4pSCCuKUgiAg8J+TjSBMb2NhdGlvbjogUmVtb3RlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIOKUggrilIIgIPCfkrAgU2FsYXJ5IFJhbmdlOiAkODBLIC0gJDEyMEsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDilIIK4pSCICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIOKUggrilIIgIPCfjq8gQ0FORElEQVRFIE1BVENIRVMgKDMvNSBIaWdoIEZpdCkgICAgICAgICAgICAgICAgICAgICAgICDilIIK4pSCICDilIzilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilJAgICDilIIK4pSCICDilIIg8J+RpCBTYXJhaCBKLiAgICAgIOKUgiBTa2lsbHM6IFJlYWN0LCBOb2RlLCBBV1Mg4pSCIDk4JSAg4pSCICAg4pSCCuKUgiAg4pSCIPCfkaQgTWlrZSBSLiAgICAgICDilIIgU2tpbGxzOiBQeXRob24sIE1MLCBTUUwgIOKUgiA5MiUgIOKUgiAgIOKUggrilIIgIOKUgiDwn5GkIEVtbWEgTC4gICAgICAg4pSCIFNraWxsczogVnVlLCBHbywgRG9ja2VyICDilIIgODclICDilIIgICDilIIK4pSCICDilJTilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilJggICDilIIK4pSCICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIOKUggrilIIgIPCflI0gQm9vbGVhbiBTZWFyY2g6ICgiUHl0aG9uIiBPUiAiSmF2YVNjcmlwdCIpIEFORCAiQUkiICAgICDilIIK4pSU4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSYCmBgYAoKLS0tCgojIyDwn5qmIFF1aWNrIFN0YXJ0CgpgYGBiYXNoCiMgQ2xvbmUgdGhlIHJlcG9zaXRvcnkKZ2l0IGNsb25lIGh0dHBzOi8vZ2l0aHViLmNvbS9TTlRMODQvQWdlbnRpYy1SZWNydWl0LVNjcmVlbmluZy5naXQKCiMgTmF2aWdhdGUgdG8gcHJvamVjdCBkaXJlY3RvcnkKY2QgQWdlbnRpYy1SZWNydWl0LVNjcmVlbmluZwoKIyBPcGVuIGluIGJyb3dzZXIKb3BlbiAiU05UTCA4NCBBZ2VudGljIFJlY3J1aXRtZW50Lmh0bWwiCmBgYAoKLS0tCgojIyDwn5K8IFVzZSBDYXNlcwoKfCBJbmR1c3RyeSB8IFVzZSBDYXNlIHwgSW1wYWN0IHwKfC0tLS0tLS0tLS18LS0tLS0tLS0tLXwtLS0tLS0tLXwKfCDwn4+iICoqRW50ZXJwcmlzZSoqIHwgVm9sdW1lIGhpcmluZyBhdCBzY2FsZSB8IFByb2Nlc3MgMTAsMDAwKyBhcHBsaWNhdGlvbnMvbW9udGggfAp8IPCfmoAgKipTdGFydHVwcyoqIHwgRmlyc3QgMTAgaGlyZXMgfCBCdWlsZCBkcmVhbSB0ZWFtIGZhc3QgfAp8IPCfj6UgKipIZWFsdGhjYXJlKiogfCBTcGVjaWFsaXplZCByZWNydWl0bWVudCB8IE1hdGNoIG5pY2hlIHNraWxsIHJlcXVpcmVtZW50cyB8Cnwg8J+SuyAqKlRlY2gqKiB8IERldmVsb3BlciBzY3JlZW5pbmcgfCBBdXRvLWNvZGUgYXNzZXNzbWVudCBpbnRlZ3JhdGlvbiB8CgotLS0KCjxkaXYgYWxpZ249ImNlbnRlciI+CgojIyDwn4yNIFN0YXJ0IEF1dG9tYXRpbmcgWW91ciBIaXJpbmcgLSBHZXQgaW4gVG91Y2gKCioqQ3JhZnRlZCB3aXRoIPCfkpkgYnkgTWlsYW4gQCBTTlRMIDg0KioKPC9kaXY+CgojIyDwn5GjIE1lZXQgVGhlIEJ1aWxkZXIg4oCTIEFJIFdvcmtmbG93IERldmVsb3BlcgoKPHAgYWxpZ249ImNlbnRlciI+CiAgPHN0cm9uZz7wn5OzIFN1cmF0LCBJbmRpYTwvc3Ryb25nPjxicj48YnI+CiAgCiAgPGEgaHJlZj0iaHR0cHM6Ly9kZXNpZGV2bG9wZXIuY29tLyIgdGFyZ2V0PSJfYmxhbmsiPgogICAgPGltZyBzcmM9Imh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2Uv8J+MvldlYnNpdGUtZGVzaWRldmxvcGVyLmNvbS00Mjg1RjQ_c3R5bGU9Zm9yLXRoZS1iYWRnZSIgLz4KICA8L2E+CiAgPGEgaHJlZj0iaHR0cHM6Ly93YS5tZS85MTk3Mjc0MTMzMDkiIHRhcmdldD0iX2JsYW5rIj4KICAgIDxpbWcgc3JjPSJodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL/CfkqxXaGF0c0FwcC0rOTFfOTcyNzRfMTMzMDktMjVEMzY2P3N0eWxlPWZvci10aGUtYmFkZ2UiIC8+CiAgPC9hPgogIDxhIGhyZWY9Imh0dHBzOi8vd3d3LmxpbmtlZGluLmNvbS9pbi9zbnRsMjc4NCIgdGFyZ2V0PSJfYmxhbmsiPgogICAgPGltZyBzcmM9Imh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2Uv8J+Ul0xpbmtlZEluLU1pbGFuX1NOVEw4NC0wMDc3QjU_c3R5bGU9Zm9yLXRoZS1iYWRnZSZsb2dvPWxpbmtlZGluIiAvPgogIDwvYT4KICA8YSBocmVmPSJodHRwczovL2dpdGh1Yi5jb20vU05UTDg0IiB0YXJnZXQ9Il9ibGFuayI+CiAgICA8aW1nIHNyYz0iaHR0cHM6Ly9pbWcuc2hpZWxkcy5pby9iYWRnZS/wn5KrR2l0SHViLVNOVEw4NC0xODE3MTc_c3R5bGU9Zm9yLXRoZS1iYWRnZSZsb2dvPWdpdGh1YiIgLz4KICA8L2E+CjwvcD4KCioqQnVpbHQgZm9yIGZvdW5kZXJzIHdobyBtb3ZlIGZhc3QgYW5kIHdhc3RlIG5vdGhpbmcuKioKCi0tLQoKIyMg8J+TnCBMaWNlbnNlCgpUaGlzIHByb2plY3QgaXMgbGljZW5zZWQgdW5kZXIgdGhlIE1JVCBMaWNlbnNlIC0gc2VlIHRoZSBbTElDRU5TRV0oTElDRU5TRSkgZmlsZSBmb3IgZGV0YWlscy4KCi0tLQoKPGRpdiBhbGlnbj0iY2VudGVyIj4KCiMjIyDwn5OPIFN1cHBvcnQgTWUgYnkgU3RhcnJpbmcgdGhpcyBSZXBvIPCfjJUKClshW0dpdEh1YiBzdGFyc10oaHR0cHM6Ly9pbWcuc2hpZWxkcy5pby9naXRodWIvc3RhcnMvU05UTDg0L0FnZW50aWMtUmVjcnVpdC1TY3JlZW5pbmc_c3R5bGU9c29jaWFsKV0oaHR0cHM6Ly9naXRodWIuY29tL1NOVEw4NC9BZ2VudGljLVJlY3J1aXQtU2NyZWVuaW5nL3N0YXJnYXplcnMpClshW0dpdEh1YiBmb3Jrc10oaHR0cHM6Ly9pbWcuc2hpZWxkcy5pby9naXRodWIvZm9ya3MvU05UTDg0L0FnZW50aWMtUmVjcnVpdC1TY3JlZW5pbmc_c3R5bGU9c29jaWFsKV0oaHR0cHM6Ly9naXRodWIuY29tL1NOVEw4NC9BZ2VudGljLVJlY3J1aXQtU2NyZWVuaW5nL25ldHdvcmspCgoqKlXwn4yQIFdlYnNpdGVdKGh0dHBzOi8vZGVzaWRldmxvcGVyLmNvbS8pIHwgW/CfkqxXaGF0c0FwcF0oaHR0cHM6Ly93YS5tZS85MTk3Mjc0MTMzMDkpIHwgW/Cfl5BMaW5rZWRJbl0oaHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL3NudGwyNzg0KSB8IF/wn5KrR2l0SHViXShodHRwczovL2dpdGh1Yi5jb20vU05UTDg0KSoqCgoqwqkgMjAyNiBTTlRMIDg0LiBBbGwgcmlnaHRzIHJlc2VydmVkLioKCjwvZGl2Pgo=
+# 🤖 SNTL84 Agentic Recruiter
+
+> **AI-Powered Recruitment Screening Module** — Reduce hiring costs by 60% | Built by Milan @ SNTL 84 | Surat, India 🇮🇳
+
+[![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-View%20Now-25d366?style=for-the-badge)](https://sntl84.github.io/sntl84-agentic-recruiter/SNTL%2084%20Agentic%20Recruitment%20.html)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/sntl2784)
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-Hire%20Me-25D366?style=for-the-badge&logo=whatsapp)](https://wa.me/919727413309)
+[![Website](https://img.shields.io/badge/Website-desidevloper.com-FF6B35?style=for-the-badge)](https://desidevloper.com)
+
+---
+
+## 🎯 What Is This?
+
+The **SNTL84 Agentic Recruiter** is a fully browser-based AI recruitment screening system that automates candidate evaluation — no backend, no API costs, zero setup.
+
+Built for:
+- 🏢 Startups that can't afford enterprise ATS
+- 👔 HR teams drowning in manual screening
+- 🤖 Developers building HR automation pipelines
+- 💼 Freelance recruiters managing high-volume roles
+
+---
+
+## ✨ Features
+
+| Feature | Description |
+|---------|-------------|
+| 🧠 AI Resume Scoring | Evaluate candidates against JD with weighted scoring rubrics |
+| 📋 JD Parser | Extract must-have vs nice-to-have skills automatically |
+| 👥 Bulk Screening | Process multiple candidates in one session |
+| 📊 Candidate Dashboard | Visual ranking of all candidates |
+| 📤 Export Ready | Export shortlist to CSV/Excel |
+| 💬 Interview Q Generator | Auto-generate role-specific interview questions |
+| 🌐 Zero Backend | 100% browser-based, no server required |
+| 💰 Zero API Cost | No paid API keys needed |
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# Clone the repo
+git clone https://github.com/SNTL84/sntl84-agentic-recruiter.git
+
+# Open in browser
+open "SNTL 84 Agentic Recruitment .html"
+```
+
+Or simply **[click here for the Live Demo →](https://sntl84.github.io/sntl84-agentic-recruiter/SNTL%2084%20Agentic%20Recruitment%20.html)**
+
+---
+
+## 🏗️ Architecture
+
+```
+sntl84-agentic-recruiter/
+├── SNTL 84 Agentic Recruitment .html   # Main application (self-contained)
+├── README.md                            # This file
+├── CONTRIBUTING.md                      # How to contribute
+└── LICENSE                              # MIT License
+```
+
+All logic is embedded in a single HTML file:
+- **HTML** → UI structure
+- **CSS** → Dark-mode professional UI
+- **Vanilla JS** → Screening engine, scoring logic, export
+
+---
+
+## 🎯 Use Cases
+
+1. **Startup Hiring** — Screen 50+ applicants in minutes
+2. **Agency Recruiting** — Standardize scoring across clients
+3. **HR Automation Demo** — Show clients what AI-assisted hiring looks like
+4. **Portfolio Project** — Demonstrate AI + automation skills
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! See **[CONTRIBUTING.md](./CONTRIBUTING.md)** for:
+- Feature ideas & roadmap
+- How to fork, branch & PR
+- Bug reporting guide
+
+---
+
+## 📞 Connect & Collaborate
+
+| Channel | Link |
+|---------|------|
+| 🌐 Website | [desidevloper.com](https://desidevloper.com) |
+| 💼 LinkedIn | [linkedin.com/in/sntl2784](https://www.linkedin.com/in/sntl2784) |
+| 💬 WhatsApp | [+91 97274 13309](https://wa.me/919727413309) |
+| 📧 Email | 3goldenlotusroots@gmail.com |
+| 🐙 GitHub | [@SNTL84](https://github.com/SNTL84) |
+| 🤖 Aratt.ai | [@desidevloper](https://aratt.ai/user/@desidevloper) |
+
+---
+
+## ⭐ Support This Project
+
+If this tool saves you time, **please star ⭐ this repo** — it helps more people discover it!
+
+Share with your network:
+- HR professionals
+- Startup founders
+- Developers building HR tools
+- Freelance recruiters
+
+---
+
+## 📄 License
+
+MIT License — free to use, fork, and build upon.
+
+---
+
+*Built with ❤️ by **Milan · SNTL 84** · Surat, India 🇮🇳*  
+*"Automate What's Costing You Money"*
