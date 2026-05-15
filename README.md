@@ -6,6 +6,7 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/sntl2784)
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-Hire%20Me-25D366?style=for-the-badge&logo=whatsapp)](https://wa.me/919727413309)
 [![Website](https://img.shields.io/badge/Website-desidevloper.com-FF6B35?style=for-the-badge)](https://desidevloper.com)
+[![Instagram](https://img.shields.io/badge/Instagram-@desibiztrade-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/desibiztrade/)
 
 ---
 
@@ -85,15 +86,16 @@ We welcome contributions! See **[CONTRIBUTING.md](./CONTRIBUTING.md)** for:
 
 ---
 
-## 📞 Connect & Collaborate
+## 📡 Connect & Collaborate
 
-| Channel | Link |
+| Platform | Link |
 |---------|------|
 | 🌐 Website | [desidevloper.com](https://desidevloper.com) |
 | 💼 LinkedIn | [linkedin.com/in/sntl2784](https://www.linkedin.com/in/sntl2784) |
 | 💬 WhatsApp | [+91 97274 13309](https://wa.me/919727413309) |
-| 📧 Email | 3goldenlotusroots@gmail.com |
-| 🐙 GitHub | [@SNTL84](https://github.com/SNTL84) |
+| 📧 Email | [3goldenlotusroots@gmail.com](mailto:3goldenlotusroots@gmail.com) |
+| 💙 GitHub | [@SNTL84](https://github.com/SNTL84) |
+| 📸 Instagram | [@desibiztrade](https://www.instagram.com/desibiztrade/) |
 | 🤖 Aratt.ai | [@desidevloper](https://aratt.ai/user/@desidevloper) |
 
 ---
